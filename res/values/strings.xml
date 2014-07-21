@@ -2,7 +2,11 @@
 <resources>
 
     <string name="app_name">One Touch Reboot</string>
-    <string name="hello_world">One Touch Reboot</string>
+    <string name="hello_world">
+    This application requires Super user access to restart the device.
+    Please accept when prompted.\n
+    If you don't have root access, this app is of no use.
+    </string>
     <string name="action_settings">Settings</string>
 
 </resources>
