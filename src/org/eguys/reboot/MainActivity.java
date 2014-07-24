@@ -1,9 +1,9 @@
 package org.eguys.reboot;
 
-import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -21,20 +21,20 @@ public class MainActivity extends ActionBarActivity {
 			DataOutputStream outputStream = new DataOutputStream(
 					process.getOutputStream());
 			// DataInputStream inputStream = new DataInputStream(
-					// process.getInputStream());
+			// process.getInputStream());
 
 			outputStream.writeBytes("reboot" + "\n");
 			outputStream.flush();
-
 			// outputStream.writeBytes("exit\n");
 			// outputStream.flush();
 			// process.waitFor();
 		} catch (IOException e) {
 			e.printStackTrace();
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
+			// } catch (InterruptedException e) {
+			// e.printStackTrace();
 		}
 	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -48,10 +48,14 @@ public class MainActivity extends ActionBarActivity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		switch(item.getItemId()){
+		case R.id.action_settings : 
 			android.os.Process.killProcess(android.os.Process.myPid());
 			return true;
+		case R.id.action_about : 
+			// Intent intent = new Intent(this, AboutActivity.class);
+			startActivity(new Intent(this, AboutActivity.class));
+			return true;	
 		}
 		return super.onOptionsItemSelected(item);
 	}
